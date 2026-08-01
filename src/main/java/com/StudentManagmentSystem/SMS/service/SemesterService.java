@@ -1,5 +1,6 @@
 package com.StudentManagmentSystem.SMS.service;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -29,7 +30,7 @@ public class SemesterService {
     public List<GetAllSemesterResponseDto> getAllSemsters() throws EntityNotFoundException{
        List<Semester> semesters =  repo.findAll();
        if(semesters == null){
-        throw new EntityNotFoundException("Semester not Found.");
+        return Collections.emptyList();
        }
        return GetAllSemesterMapper.entityToResponse(semesters);
     }

@@ -1,5 +1,7 @@
 package com.StudentManagmentSystem.SMS.service;
 
+import java.util.Collections;
+
 import com.StudentManagmentSystem.SMS.repository.EnrollmentRepo;
 
 import java.util.List;
@@ -67,7 +69,7 @@ public class MarksService {
     public List<MarksResponseDto> getAllMarks(){
         List<Marks> marks = repo.findAll();
         if(marks.isEmpty()){
-            throw new EntityNotFoundException("Marks not Found");
+            return Collections.emptyList();
         }
         return MarksMapper.entityToResponse(marks);
     }

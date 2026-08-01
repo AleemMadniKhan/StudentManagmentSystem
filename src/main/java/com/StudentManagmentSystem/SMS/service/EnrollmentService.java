@@ -1,6 +1,9 @@
 package com.StudentManagmentSystem.SMS.service;
 
+import java.util.Collections;
+
 import com.StudentManagmentSystem.SMS.repository.CourseOfferingRepo;
+
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -53,7 +56,7 @@ public class EnrollmentService {
     public List<EnrollmentResponseDto> getAllEnrollment() {
         List<Enrollment> enrollment = repo.findAll();
         if (enrollment.isEmpty()) {
-            throw new EntityNotFoundException("There is no enrollments.");
+            return Collections.emptyList();
         }
         List<EnrollmentResponseDto> response = EnrollmentMapper.entityToResponse(enrollment);
 

@@ -1,5 +1,6 @@
 package com.StudentManagmentSystem.SMS.service;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -40,7 +41,7 @@ public class SectionService {
 
         List<Section> sections = sectionRepo.findAll();
         if(sections.isEmpty()){
-            throw new EntityNotFoundException("No section found.");
+            return Collections.emptyList();
         }
         return SectionMapper.entityToResponse(sections);
     }

@@ -1,5 +1,6 @@
 package com.StudentManagmentSystem.SMS.service;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -51,7 +52,7 @@ public class StudentService {
     public List<GetAllStudentsResponseDto> getAllStudents(){
         List<Student> students  = studentRepo.findAll();
         if (students.isEmpty() || students == null) {
-            throw new EntityNotFoundException("No students found.");
+            return Collections.emptyList();
         }
         return AddStudentMapper.getAllStudentsMapper(students);
     }

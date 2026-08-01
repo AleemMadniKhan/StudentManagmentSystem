@@ -1,6 +1,9 @@
 package com.StudentManagmentSystem.SMS.service;
 
+import java.util.Collections;
+
 import com.StudentManagmentSystem.SMS.mapper.GetAllCourcesMapper;
+
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -35,10 +38,10 @@ public class CourseService {
         return AddCourseMapper.courseToResponse(course);
     }
 
-    public List<GetAllCoursesResponseDto> getAllCources() throws EntityNotFoundException{
+    public List<GetAllCoursesResponseDto> getAllCources() {
         List<Course> courses  =  repo.findAll();
         if(courses == null){
-            throw new EntityNotFoundException("No Courses Found.");
+            return Collections.emptyList();
         }
         return getAllCourcesMapper.courseToResponse(courses);
     }

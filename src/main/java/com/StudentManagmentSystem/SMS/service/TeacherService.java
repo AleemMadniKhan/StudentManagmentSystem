@@ -1,5 +1,6 @@
 package com.StudentManagmentSystem.SMS.service;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -48,7 +49,7 @@ public class TeacherService {
         public List<GetAllTeachersResponseDto> getAllTeachers(){
         List<Teacher> teachers  = teacherRepo.findAll();
         if (teachers.isEmpty() || teachers == null) {
-            throw new EntityNotFoundException("No teachers found.");
+            return Collections.emptyList();
         }
         return AddTeacherMapper.getAllTeachersMapper(teachers);
     }
@@ -72,11 +73,14 @@ public class TeacherService {
             return "Teacher Updated successfully.";
     }
 
-        public String deleteTeacher(Integer id) {
-       if (teacherRepo.existsById(id)) 
+    public String deleteTeacher(Integer id) {
+       if (teacherRepo.existsById(id)) {
         teacherRepo.deleteById(id);
-       else
-       throw new EntityNotFoundException("Teacher not Found.");
+       }
+        
+       else{
+        throw new EntityNotFoundException("Teacher not Found.");
+       }
        return "Teacher with id " + id + " deleted sucessfully.";
     }
 
