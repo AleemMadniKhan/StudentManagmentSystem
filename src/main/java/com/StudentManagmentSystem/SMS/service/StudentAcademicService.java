@@ -1,6 +1,7 @@
 package com.StudentManagmentSystem.SMS.service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -8,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.StudentManagmentSystem.SMS.dto.response.CourseAssessmentMarksResponseDto;
 import com.StudentManagmentSystem.SMS.dto.response.studentDashboardResponse.StudentAcademicsResponseDto;
 import com.StudentManagmentSystem.SMS.exceptions.BadRequestException;
-import com.StudentManagmentSystem.SMS.exceptions.EntityNotFoundException;
 import com.StudentManagmentSystem.SMS.model.Course;
 import com.StudentManagmentSystem.SMS.model.CourseOffering;
 import com.StudentManagmentSystem.SMS.model.Enrollment;
@@ -64,7 +64,7 @@ public class StudentAcademicService {
 
         List<Enrollment> enrollments = enrollmentRepo.findAllByStudent_studentId(student.getStudentId());
         if (enrollments == null ||enrollments.isEmpty()) {
-            throw new EntityNotFoundException("No courses found");
+            return Collections.emptyList();
         }
 
         List<StudentAcademicsResponseDto> courses = new ArrayList<>(); 
