@@ -38,7 +38,7 @@ public class SecurityConfig {
         return http
         .csrf(custumizer -> custumizer.disable())
         .authorizeHttpRequests(request -> request
-        .requestMatchers("/auth/**","/api/**","/error", "/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html","").permitAll()
+        .requestMatchers("/auth/**","/api/**","/error", "/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
         .anyRequest().authenticated())
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .cors(cors -> cors.configurationSource(corsConfigurationSource()))
@@ -49,7 +49,7 @@ public class SecurityConfig {
     @Bean
 public CorsConfigurationSource corsConfigurationSource() {
     CorsConfiguration config = new CorsConfiguration();
-    config.setAllowedOrigins(List.of("http://localhost:5173","https://student-managment-system-frontend-eight.vercel.app"));
+    config.setAllowedOrigins(List.of("http://localhost:5173", "https://student-managment-system-frontend-eight.vercel.app"));
     config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
     config.setAllowedHeaders(List.of("*"));
     config.setAllowCredentials(true);
