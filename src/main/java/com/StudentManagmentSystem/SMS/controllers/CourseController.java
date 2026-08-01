@@ -31,13 +31,13 @@ public class CourseController {
         this.service = service;
     }
     
-    @PostMapping("")
+    @PostMapping("/")
     @PreAuthorize("hasAuthority('CREATE_COURSE')")
     public AddCourseResponseDto createCourse(@Valid @RequestBody AddCourseRequestDto request) throws BadRequestException {
         return service.createCourse(request);
     }
     
-    @GetMapping("")
+    @GetMapping("/")
     @PreAuthorize("hasAuthority('GET_ALL_COURSES')")
     public List<GetAllCoursesResponseDto> getCourses() {
         return service.getAllCources();
