@@ -48,3 +48,5 @@ Thumbs.db
 ### Application Secrets ###
 application-local.properties
 application-dev.properties
+
+application-local.properties

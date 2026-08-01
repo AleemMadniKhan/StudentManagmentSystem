@@ -1,22 +1,31 @@
 # 🎓 Student Management System
 
-A secure **Student Management System** built using **Spring Boot**, **Spring Security (JWT)**, and **MySQL**. The project follows a clean layered architecture and exposes RESTful APIs for managing students, teachers, courses, enrollments, marks, semesters, and role-based dashboards.
+![Java](https://img.shields.io/badge/Java-21-orange?logo=openjdk)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.x-6DB33F?logo=springboot)
+![Spring Security](https://img.shields.io/badge/Spring_Security-JWT-6DB33F?logo=springsecurity)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Neon-336791?logo=postgresql)
+![Hibernate](https://img.shields.io/badge/Hibernate-ORM-59666C?logo=hibernate)
+![Maven](https://img.shields.io/badge/Maven-Build-C71A36?logo=apachemaven)
+![Swagger](https://img.shields.io/badge/Swagger-OpenAPI-85EA2D?logo=swagger)
+![License](https://img.shields.io/badge/License-MIT-blue)
 
-This project was developed to demonstrate real-world backend development practices including authentication, authorization, database normalization, REST API design, and layered architecture.
+A secure **Student Management System** backend built using **Spring Boot**, **Spring Security (JWT)**, **PostgreSQL**, and **Spring Data JPA**. The project follows a clean layered architecture and exposes RESTful APIs for managing students, teachers, courses, enrollments, marks, semesters, and role-based academic operations.
+
+This project was developed to demonstrate real-world backend development practices including authentication, authorization, database normalization, REST API design, validation, exception handling, and layered architecture.
 
 ---
 
-## Overview
+# 📖 Overview
 
-The Student Management System simulates a university management platform that manages the complete student academic lifecycle — from authentication and registration to course enrollment, assessment management, and GPA calculation.
+The Student Management System simulates a university management platform that manages the complete student academic lifecycle—from authentication and registration to course enrollment, assessment management, and GPA calculation.
 
-The application supports three user roles — **Admin**, **Teacher**, and **Student** — each with distinct permissions and a dedicated dashboard.
+The application supports three user roles—**Admin**, **Teacher**, and **Student**—each with dedicated APIs and permissions to securely perform role-specific operations.
 
 ---
 
-## Features
+# ✨ Features
 
-### Authentication & Security
+## 🔐 Authentication & Security
 
 - JWT Authentication
 - Refresh Token Authentication
@@ -28,27 +37,34 @@ The application supports three user roles — **Admin**, **Teacher**, and **Stud
 - Request Validation
 - Global Exception Handling
 - Secure REST APIs
+- DTO Pattern
+- Entity-DTO Mapping
 
-### Student Module
+---
+
+## 👨‍🎓 Student APIs
 
 - Student Registration
-- Student Profile
-- Student Dashboard
+- Student Profile Management
 - View Registered Courses
 - View Assessment Marks
 - View Semester Information
 - Automatic GPA Calculation
 
-### Teacher Module
+---
+
+## 👨‍🏫 Teacher APIs
 
 - Teacher Registration
-- Teacher Profile
-- Teacher Dashboard
+- Teacher Profile Management
 - View Assigned Courses
 - View Assigned Sections
-- View Total Enrolled Students
+- View Enrolled Students
+- Manage Student Marks
 
-### Admin Module
+---
+
+## 👨‍💼 Admin APIs
 
 - Manage Students
 - Manage Teachers
@@ -58,178 +74,348 @@ The application supports three user roles — **Admin**, **Teacher**, and **Stud
 - Manage Course Offerings
 - Manage Enrollments
 - Manage Marks
-- System Statistics Dashboard
+- View System Statistics
 
-### Academic Management
+---
+
+## 📚 Academic Management
 
 - Course Management
 - Semester Management
 - Section Management
 - Course Offering Management
 - Student Enrollment
-- Weighted Assessment Marks
+- Assessment Marks
 - GPA Calculation
 
 ---
 
-## Dashboards
+# 💻 Tech Stack
 
-**Student Dashboard** — Student information, semester details, registered courses, assessment marks, course percentage, grade points, GPA, completed credits.
-
-**Teacher Dashboard** — Teacher information, assigned courses, assigned sections, student count per section.
-
-**Admin Dashboard** — Totals for students, teachers, courses, sections, enrollments, and course offerings, plus recently added students, teachers, and courses.
-
----
-
-## Tech Stack
-
-| Layer                 | Technologies                                                             |
-| --------------------- | ------------------------------------------------------------------------ |
-| **Backend**           | Java 21, Spring Boot, Spring Security, Spring Data JPA, Hibernate, Maven |
-| **Database**          | MySQL                                                                    |
-| **API Documentation** | Swagger / OpenAPI                                                        |
-| **Testing**           | Postman, Swagger UI                                                      |
+| Layer                 | Technologies               |
+| --------------------- | -------------------------- |
+| **Language**          | Java 21                    |
+| **Framework**         | Spring Boot                |
+| **Security**          | Spring Security, JWT       |
+| **ORM**               | Spring Data JPA, Hibernate |
+| **Database**          | PostgreSQL (Neon Database) |
+| **Build Tool**        | Maven                      |
+| **API Documentation** | Swagger / OpenAPI          |
+| **Testing**           | Postman, Swagger UI        |
 
 ---
 
-## Architecture
-
-The application follows a clean layered architecture:
+# 🏗️ Architecture
 
 ```text
-                Client
-                  │
-           HTTP / REST API
-                  │
-                  ▼
-          Spring Boot Controller
-                  │
-                  ▼
-             Service Layer
-                  │
-                  ▼
-          Repository Layer
-                  │
-                  ▼
-             MySQL Database
+            React Frontend / API Client
+                      │
+               HTTP / REST API
+                      │
+                      ▼
+        Spring Security (JWT Filter)
+                      │
+                      ▼
+             REST Controllers
+                      │
+                      ▼
+              Service Layer
+                      │
+                      ▼
+            Repository Layer
+                      │
+                      ▼
+         PostgreSQL (Neon Database)
 ```
 
-### Project Structure
+The project follows a layered architecture that separates presentation, business logic, and data access, making the application easier to maintain and scale.
+
+---
+
+# 📂 Project Structure
 
 ```text
 src
 ├── main
-│   ├── java
-│   │   └── com.aleemmadni.sms
-│   │       ├── configuration
-│   │       ├── controllers
-│   │       ├── dto
-│   │       │   ├── request
-│   │       │   └── response
-│   │       ├── exceptions
-│   │       ├── filter
-│   │       ├── mapper
-│   │       ├── model
-│   │       ├── repository
-│   │       ├── security
-│   │       ├── service
-│   │       └── SmsApplication.java
-│   │
-│   └── resources
-│       └── application.properties
 │
-└── test
+├── java
+│   └── com.StudentManagementSystem.SMS
+│       ├── configuration
+│       ├── controller
+│       ├── dto
+│       │   ├── request
+│       │   └── response
+│       ├── entity
+│       ├── enums
+│       ├── exception
+│       ├── filter
+│       ├── mapper
+│       ├── repository
+│       ├── security
+│       ├── service
+│       ├── util
+│       └── SmsApplication.java
+│
+└── resources
+    ├── application.properties
+    └── application-local.properties
 ```
 
 ---
 
-## Database Design
+# ⚙️ Configuration
 
-The database is designed using **BCNF (Boyce-Codd Normal Form)** to reduce redundancy and maintain data integrity.
+The project uses **Spring Profiles** to separate common configuration from local development settings.
 
-**Core entities:** User, Student, Teacher, Admin, Course, Semester, Section, Course Offering, Enrollment, Marks
+### `application.properties`
 
-**Concepts implemented:** ER diagram design, BCNF normalization, primary/foreign keys, one-to-one, one-to-many, and many-to-one relationships, SQL joins, referential integrity.
-
----
-
-## REST APIs
-
-The project exposes RESTful APIs for:
-
-Authentication · Students · Teachers · Courses · Semesters · Sections · Course Offerings · Enrollments · Marks · Student Dashboard · Teacher Dashboard · Admin Dashboard
-
-Interactive API documentation is available via Swagger after running the application:
-
-```
-http://localhost:8080/swagger-ui/index.html
-```
-
----
-
-## GPA Calculation
-
-GPA is calculated automatically using weighted assessment scores, course percentage, grade point conversion, and credit hour weighting. Grading logic is implemented inside dedicated service classes to keep the application modular and maintainable.
-
----
-
-## Getting Started
-
-### Prerequisites
-
-- Java 21+
-- Maven
-- MySQL 8+
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/AleemMadniKhan/student-management-system.git
-cd student-management-system
-```
-
-### 2. Configure the Database
-
-Create a MySQL database and update `src/main/resources/application.properties`:
+Contains shared application configuration.
 
 ```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/student_management_system
+spring.application.name=SMS
+spring.profiles.active=local
+```
+
+### `application-local.properties`
+
+Create the following file inside:
+
+```text
+src/main/resources/application-local.properties
+```
+
+Example:
+
+```properties
+spring.datasource.url=YOUR_DATABASE_URL
 spring.datasource.username=YOUR_DATABASE_USERNAME
 spring.datasource.password=YOUR_DATABASE_PASSWORD
 
-jwt.secret=YOUR_BASE64_SECRET_KEY
+jwt.secretkey=YOUR_SECRET_KEY
 ```
 
-### 3. Run the Application
+> **Important**
+>
+> `application-local.properties` contains sensitive information and is excluded from Git using `.gitignore`.
+>
+> Never commit database credentials or JWT secrets to GitHub.
+
+---
+
+# 🗄️ Database Design
+
+The database is designed using **BCNF (Boyce-Codd Normal Form)** to reduce redundancy and maintain data integrity.
+
+### Core Entities
+
+- User
+- Student
+- Teacher
+- Admin
+- Course
+- Semester
+- Section
+- Course Offering
+- Enrollment
+- Marks
+
+### Concepts Implemented
+
+- ER Diagram Design
+- BCNF Normalization
+- Primary & Foreign Keys
+- One-to-One Relationships
+- One-to-Many Relationships
+- Many-to-One Relationships
+- Referential Integrity
+
+---
+
+# 🌐 REST APIs
+
+The project exposes RESTful APIs for:
+
+- Authentication
+- Students
+- Teachers
+- Courses
+- Semesters
+- Sections
+- Course Offerings
+- Enrollments
+- Marks
+- Student APIs
+- Teacher APIs
+- Admin APIs
+
+---
+
+# 📄 API Documentation
+
+After starting the application, Swagger UI is available at:
+
+```text
+http://localhost:8080/swagger-ui/index.html
+```
+
+Swagger provides:
+
+- Interactive API Testing
+- Request & Response Models
+- JWT Authentication Support
+- Complete API Documentation
+
+---
+
+# 📸 Screenshots
+
+## Swagger UI
+
+![](screenshots/swagger-home.png)
+
+---
+
+## Authentication APIs
+
+![](screenshots/swagger-auth.png)
+
+---
+
+## Course APIs
+
+![](screenshots/swagger-course.png)
+
+---
+
+## Database ER Diagram
+
+![](screenshots/database-erd.png)
+
+---
+
+# 🚀 Getting Started
+
+## Prerequisites
+
+- Java 21+
+- Apache Maven
+- PostgreSQL
+- Git
+
+---
+
+## 1. Clone the Repository
+
+```bash
+git clone https://github.com/AleemMadniKhan/student-management-system.git
+
+cd student-management-system
+```
+
+---
+
+## 2. Configure the Application
+
+Create:
+
+```text
+src/main/resources/application-local.properties
+```
+
+Example:
+
+```properties
+spring.datasource.url=YOUR_DATABASE_URL
+spring.datasource.username=YOUR_DATABASE_USERNAME
+spring.datasource.password=YOUR_DATABASE_PASSWORD
+
+jwt.secretkey=YOUR_SECRET_KEY
+```
+
+This file is ignored by Git using `.gitignore` to keep sensitive information secure.
+
+---
+
+## 3. Run the Application
+
+Using Maven:
 
 ```bash
 mvn spring-boot:run
 ```
 
-The backend will start on `http://localhost:8080`. Swagger UI is available at `http://localhost:8080/swagger-ui/index.html`.
+Or run the project directly from your IDE.
+
+The backend will start at:
+
+```text
+http://localhost:8080
+```
 
 ---
 
-## Status
+## 4. Open Swagger
 
-Core backend is feature-complete: JWT authentication, role- and permission-based authorization, full CRUD across all modules, role-specific dashboard APIs, GPA calculation, and Swagger documentation are all implemented and working.
+Visit:
 
----
-
-## Roadmap
-
-- [ ] Attendance management
-- [ ] Timetable management
-- [ ] File uploads
-- [ ] Email notifications
-- [ ] Report generation (PDF/Excel)
-- [ ] Docker support
-- [ ] Unit and integration test coverage
+```text
+http://localhost:8080/swagger-ui/index.html
+```
 
 ---
 
-## Author
+# 🔒 Security
+
+The application implements multiple security layers to protect REST APIs.
+
+- JWT Authentication
+- Refresh Token Authentication
+- Spring Security
+- BCrypt Password Encryption
+- Stateless Authentication
+- Role-Based Authorization
+- Permission-Based Authorization
+- Method-Level Security
+- Request Validation
+- Global Exception Handling
+
+---
+
+# 📌 Project Status
+
+The backend is fully functional and currently includes:
+
+- ✅ JWT Authentication
+- ✅ Refresh Token Authentication
+- ✅ Spring Security
+- ✅ CRUD Operations
+- ✅ Role-Based Authorization
+- ✅ Permission-Based Authorization
+- ✅ PostgreSQL Integration
+- ✅ Swagger Documentation
+- ✅ Layered Architecture
+- ✅ DTO Pattern
+- ✅ Global Exception Handling
+- ✅ GPA Calculation
+
+---
+
+# 🚀 Future Improvements
+
+- Attendance Management
+- Timetable Management
+- File Uploads
+- Email Notifications
+- PDF & Excel Report Generation
+- Docker Support
+- Unit Testing
+- Integration Testing
+- CI/CD Pipeline
+- Cloud Deployment
+
+---
+
+# 👨‍💻 Author
 
 **Aleem Madni Khan**
 Software Engineering Student — Karachi, Pakistan
@@ -237,5 +423,3 @@ Software Engineering Student — Karachi, Pakistan
 [GitHub](https://github.com/AleemMadniKhan) · [LinkedIn](https://www.linkedin.com/in/aleemmadnikhan/)
 
 ---
-
-If you found this project helpful, consider giving it a star on GitHub.
