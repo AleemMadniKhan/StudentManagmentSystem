@@ -23,7 +23,7 @@ This project was developed to demonstrate real-world backend development practic
 
 ## Backend API
 
-> studentmanagmentsystem-production-9052.up.railway.app
+> https://studentmanagmentsystem-production-9052.up.railway.app/
 
 ## Swagger
 
