@@ -15,6 +15,26 @@ This project was developed to demonstrate real-world backend development practic
 
 ---
 
+# 🌐 Live Demo
+
+## Frontend
+
+> https://student-managment-system-frontend-eight.vercel.app
+
+## Backend API
+
+> studentmanagmentsystem-production-9052.up.railway.app
+
+## Swagger
+
+> https://studentmanagmentsystem-production-9052.up.railway.app/swagger-ui/index.html#/
+
+## Frontend Repository
+
+> https://github.com/AleemMadniKhan/StudentManagementSystemFrontend
+
+---
+
 # 📖 Overview
 
 The Student Management System simulates a university management platform that manages the complete student academic lifecycle—from authentication and registration to course enrollment, assessment management, and GPA calculation.
@@ -281,7 +301,7 @@ Swagger provides:
 ## 1. Clone the Repository
 
 ```bash
-git clone https://github.com/AleemMadniKhan/student-management-system.git
+git clone https://github.com/AleemMadniKhan/StudentManagementSystem.git
 
 cd student-management-system
 ```
