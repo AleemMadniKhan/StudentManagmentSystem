@@ -405,8 +405,7 @@ The backend is fully functional and currently includes:
 - Unit Testing
 - Integration Testing
 - CI/CD Pipeline
-- Cloud Deployment
-
+  
 ---
 
 # 👨‍💻 Author
